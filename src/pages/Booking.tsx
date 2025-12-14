@@ -166,7 +166,22 @@ const Booking = () => {
         client_phone: clientPhone,
       });
 
-      if (error) throw error;
+      if (error) {
+        // Check for unique constraint violation (code 23505)
+        if (error.code === '23505') {
+          // Refresh booked slots to show updated availability
+          await fetchBookedSlots();
+          setSelectedTime(null);
+          toast({
+            title: 'Horário indisponível',
+            description: 'Este horário já foi preenchido. Por favor, escolha outro horário ou barbeiro.',
+            variant: 'destructive',
+          });
+          setStep(3);
+          return;
+        }
+        throw error;
+      }
 
       // Trigger email edge function (non-blocking)
       supabase.functions.invoke('send-confirmation-email', {
