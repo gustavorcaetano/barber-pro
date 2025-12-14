@@ -143,6 +143,7 @@ const Booking = () => {
   };
 
   const handleSubmit = async () => {
+    // Verificação de campos obrigatórios (mantida)
     if (!user || !selectedService || !selectedBarber || !selectedDate || !selectedTime) {
       toast({
         title: 'Erro',
@@ -153,35 +154,51 @@ const Booking = () => {
     }
 
     setLoading(true);
+    
+    // Converte a data selecionada para o formato do banco de dados (para reutilização)
+    const appointmentDateStr = format(selectedDate, 'yyyy-MM-dd');
 
     try {
-      const { error } = await supabase.from('appointments').insert({
+      // ----------------------------------------------------
+      // PASSO 1: VERIFICAÇÃO DE CONFLITO CRÍTICA (CONSULTA AO BD)
+      // ----------------------------------------------------
+      
+      // 1.1 Consulta para verificar se já existe um agendamento com a mesma chave:
+      // (Barbeiro ID, Data e Horário)
+      const { data: existingAppointment, error: checkError } = await supabase
+        .from('appointments')
+        .select('id')
+        .eq('barber_id', selectedBarber.id)
+        .eq('appointment_date', appointmentDateStr)
+        .eq('appointment_time', selectedTime)
+        .maybeSingle(); 
+
+      if (checkError) {
+        // Se houver erro na consulta, lançamos um erro para o bloco catch
+        throw new Error('Erro ao verificar a disponibilidade do horário: ' + checkError.message);
+      }
+
+      // 1.2 Se a consulta retornar dados, há um conflito. Lançamos um erro customizado.
+      if (existingAppointment) {
+        throw new Error('Este horário já foi reservado! Por favor, volte e escolha um horário ou barbeiro diferente.');
+      }
+      
+      // ----------------------------------------------------
+      // PASSO 2: INSERÇÃO (SÓ EXECUTA SE NÃO HOUVE CONFLITO)
+      // ----------------------------------------------------
+      
+      const { error: insertError } = await supabase.from('appointments').insert({
         client_id: user.id,
         barber_id: selectedBarber.id,
         service_id: selectedService.id,
-        appointment_date: format(selectedDate, 'yyyy-MM-dd'),
+        appointment_date: appointmentDateStr, // Usando a variável formatada
         appointment_time: selectedTime,
         client_name: clientName || user.email?.split('@')[0] || 'Cliente',
         client_email: user.email || '',
         client_phone: clientPhone,
       });
 
-      if (error) {
-        // Check for unique constraint violation (code 23505)
-        if (error.code === '23505') {
-          // Refresh booked slots to show updated availability
-          await fetchBookedSlots();
-          setSelectedTime(null);
-          toast({
-            title: 'Horário indisponível',
-            description: 'Este horário já foi preenchido. Por favor, escolha outro horário ou barbeiro.',
-            variant: 'destructive',
-          });
-          setStep(3);
-          return;
-        }
-        throw error;
-      }
+      if (error) throw error;
 
       // Trigger email edge function (non-blocking)
       supabase.functions.invoke('send-confirmation-email', {
@@ -202,6 +219,7 @@ const Booking = () => {
 
       navigate('/cliente');
     } catch (error: any) {
+      // O catch agora trata o erro de CONFLITO ou qualquer outro erro de banco/inserção.
       toast({
         title: 'Erro ao agendar',
         description: error.message,
