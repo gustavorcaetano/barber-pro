@@ -1,7 +1,19 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+// --- Configuração de Segurança e Inicialização do Resend ---
+// 1. Defina um nome de variável de ambiente (ex: "RESEND_API_KEY")
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+// 2. Verificação de segurança: Lança um erro se a chave não estiver configurada
+if (!RESEND_API_KEY) {
+    console.error("ERRO: A variável de ambiente 'RESEND_API_KEY' não foi configurada.");
+    // No Deno Deploy, é melhor deixar o erro ser capturado ou lançar para falha
+    throw new Error("Chave da API do Resend ausente.");
+}
+
+// 3. Inicializa o Resend com a variável obtida
+const resend = new Resend(RESEND_API_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -21,7 +33,8 @@ const handler = async (req: Request): Promise<Response> => {
   console.log("send-confirmation-email function called");
   
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    // Resposta 204 No Content é o padrão para pre-flight OPTIONS
+    return new Response(null, { status: 204, headers: corsHeaders });
   }
 
   try {
@@ -124,10 +137,15 @@ const handler = async (req: Request): Promise<Response> => {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error in send-confirmation-email function:", error);
+    
+    // Tipagem Segura: Trata 'error' como 'unknown' (inferido pelo TypeScript)
+    const errorMessage = 
+      error instanceof Error ? error.message : "Um erro desconhecido ocorreu";
+      
     return new Response(
-      JSON.stringify({ success: false, error: error.message }),
+      JSON.stringify({ success: false, error: errorMessage }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
