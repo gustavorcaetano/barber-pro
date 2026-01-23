@@ -8,25 +8,25 @@
 
 ---
 
-## 🚀 Badges
+##  BADGES
 
-### 🧰 Tecnologias & Stack
+###  TECNOLOGIAS & STACK
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=black)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-### ☁️ Cloud & Services
+###  CLOUD & SERVICES
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![Resend](https://img.shields.io/badge/Resend-000000?style=for-for-the-badge&logo=resend&logoColor=white)
 
-### 📌 Status do Projeto
+###  STATUS DO PROJETO
 ![STATUS](https://img.shields.io/badge/STATUS-EM%20DEPLOYMENT-007bff?style=for-the-badge)
 
 ---
 
-# 🌟 Sobre o Projeto
+#  SOBRE O PROJETO
 
 O **Barber Pro** é um Sistema de Agendamento como Serviço (SAAS) moderno, focado em barbearias e salões de beleza. Ele resolve o problema clássico de agendamento manual, oferecendo uma experiência de usuário fluida e garantindo a integridade dos dados através de uma lógica robusta de **controle de concorrência**.
 
@@ -34,7 +34,7 @@ Criado como um projeto de **portfólio completo Full Stack**, simula um sistema 
 
 ---
 
-# 🎯 Desafios e Soluções
+#  DESAFIOS E SOLUÇÕES
 
 Este projeto foi construído para enfrentar problemas comuns em sistemas de reserva, demonstrando a capacidade de desenvolvimento de *back-end* seguro e eficiente:
 
@@ -47,22 +47,22 @@ Este projeto foi construído para enfrentar problemas comuns em sistemas de rese
 
 ---
 
-# 🔧 Funcionalidades Chave
+#  FUNCIONALIDADES CHAVE
 
-### 🔗 Agendamento
+###  AGENDAMENTO
 - Seleção de Barbeiro, Serviço e Horário.
 - Lógica de **Controle de Conflitos** (Core) que impede agendamentos duplicados.
 - Notificações de confirmação por E-mail (via Resend).
 
-### 🔐 Autenticação
+###  AUTENTICAÇÃO
 - Cadastro e Login de clientes via e-mail e senha.
 
-### 🛠 Painel
+###  PAINEL
 - **Painel do Cliente:** Área dedicada para visualizar e gerenciar agendamentos futuros.
 
 ---
 
-# 💻 Tecnologias Utilizadas (O Poder da Stack)
+#  TECNOLOGIAS UTILIZADAS (O PODER DO STACK)
 
 | Tecnologia | Função no Projeto | Por que foi escolhida? |
 | :--- | :--- | :--- |
@@ -75,12 +75,12 @@ Este projeto foi construído para enfrentar problemas comuns em sistemas de rese
 
 ---
 
-# 🖥️ Demonstração
+#  DEMONSTRAÇÃO
 
 🔗 **Site ([Publicado no Vercel](https://barber-pro-five.vercel.app/)):**
 `[INSERIR URL DO VERCEL AQUI]`
 
-### 📸 Capturas de Tela
+###  CAPTURAS DE TELA
 
 > *(Substitua pelos caminhos reais quando enviar para o GitHub)*
 
@@ -91,7 +91,7 @@ Este projeto foi construído para enfrentar problemas comuns em sistemas de rese
 
 ---
 
-# 🎯 Objetivo
+#  OBJETIVO
 
 Este projeto foi desenvolvido para compor o portfólio e demonstrar domínio de:
 
@@ -102,7 +102,7 @@ Este projeto foi desenvolvido para compor o portfólio e demonstrar domínio de:
 
 ---
 
-# 👨‍💻 Autor
+#  AUTOR
 
 **Gustavo Ramos Caetano**
 Desenvolvedor Web • Estudante do IFSP Guarulhos
