@@ -1,4 +1,4 @@
-# ✂️ BARBER PRO: Agendamento Inteligente
+#  BARBER PRO: Agendamento Inteligente
 ### *Seu salão 24/7 com inteligência e concorrência zero*
 **“A revolução do agendamento digital no setor de beleza.”**
 
