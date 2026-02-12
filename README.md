@@ -3,7 +3,7 @@
 **“A revolução do agendamento digital no setor de beleza.”**
 
 <div align="center">
-  <img src="./public/favicon-white.ico" width="180" alt="Logo Barber Pro">
+  <img src="./public/favicon.ico" width="180" alt="Logo Barber Pro">
 </div>
 
 ---
