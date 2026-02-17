@@ -112,6 +112,8 @@ Desenvolvedor Web • Estudante do IFSP Guarulhos
 
 ---
 
-# 📜 Licença
+## ⚖️ Licença
 
-Este projeto é de código aberto e educacional.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+Feito com ❤️ por [Gustavo Ramos Caetano] - [[Seu LinkedIn ou Portfólio](https://gustavorcaetano.github.io/meu-portfolio/)]
