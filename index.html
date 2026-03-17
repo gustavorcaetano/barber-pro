@@ -1,25 +1,40 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Barber Pro</title>
-    <meta name="description" content="SaaS de agendamento de um Barbearia" />
-    <meta name="author" content="Gustavo Ramos" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Barber Pro App" />
-    <meta property="og:description" content="A barbearia dos seus sonhos" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="public/baberpro.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TODO: Set the document title to the name of your application -->
+  <title>Barber Pro</title>
+  <meta name="description" content="SaaS de agendamento de um Barbearia" />
+  <meta name="author" content="Gustavo Ramos" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Barberpro" />
-    <meta name="twitter:image" content="./public/baberpro.png" />
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f59e0b">
+  <link rel="apple-touch-icon" href="/logo.png">
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- TODO: Update og:title to match your application name -->
+  <meta property="og:title" content="Barber Pro App" />
+  <meta property="og:description" content="A barbearia dos seus sonhos" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/baberpro.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Barberpro" />
+  <meta name="twitter:image" content="./public/baberpro.png" />
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx">
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+
+
+  </script>
+</body>
+
 </html>
