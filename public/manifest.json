@@ -6,7 +6,7 @@
     {
       "src": "logo2.png",
       "type": "image/png",
-      "sizes": "512x512",
+      "sizes": "500x500", 
       "purpose": "any"
     }
   ],
@@ -18,13 +18,13 @@
   "screenshots": [
     {
       "src": "screenshot-wide.png",
-      "sizes": "1280x720",
+      "sizes": "2880x1800",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
       "src": "screenshot-mobile.png",
-      "sizes": "390x844",
+      "sizes": "892x1624",
       "type": "image/png"
     }
   ]
